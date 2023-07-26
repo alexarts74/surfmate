@@ -3,4 +3,10 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :messages
+  namespace :api, defaults: { format: :json } do
+    devise_for :users, controllers: {
+      registrations: 'api/registrations',
+      sessions: 'api/sessions'
+    }
+  end
 end
